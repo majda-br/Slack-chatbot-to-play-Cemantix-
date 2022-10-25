@@ -1,0 +1,2 @@
+# cemantix-majda
+Play Cemantix!
