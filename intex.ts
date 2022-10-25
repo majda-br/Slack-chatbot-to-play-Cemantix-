@@ -22,12 +22,16 @@ async function handler(word1: string, word2: string): Promise<string> {
 }
 
 const extractGuess = async (req: Request) => {
+    let score: string;
     const slackPayload = await req.formData();
     const guess = await slackPayload.get("text")?.toString();
     if (!guess) {
         throw Error("Guess is empty or null");
     }
-    return new Response(guess);
+    else {
+        score = await handler(guess, 'chien');
+        return new Response(score);
+    }
 };
 
 serve(extractGuess);
